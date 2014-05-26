@@ -93,7 +93,7 @@ CMT03 // Boreal Deciduous Forest ###THESE ARE JUNK VALUES!!!###- (max. 10 PFTs o
 //===========================================================
 CMT04 // Shrub Tundra - (max. 10 PFTs over 1 soil column) (BGC) plant calibrated parameters
 //Salix      Betula       Decid.       E.green      Sedges       Forbs        Grasses      Lichens      Feather      Misc1.       // names: comments                  
-255.0        625.0        83.0         23.9         45.0         66.8         27.8         38.8         86.1         0.0          // cmax:
+1255.0        625.0        83.0         23.9         45.0         66.8         27.8         38.8         86.1         0.0          // cmax:
 2.5          8.5          0.81         0.19         0.23         0.76         0.29         0.02         0.1          0.0          // nmax:
 0.083        0.083        0.083        0.118        0.083        0.083        0.083        0.037        0.018        0.0          // cfall(0): leave
 0.020        0.016        0.012        0.008        0.0          0.0          0.0          0.0          0.0          0.0          // cfall(1): stem
