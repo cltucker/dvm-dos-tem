@@ -407,7 +407,6 @@ void WildFire::burn() {
   //- this will let the system -N balanced in a long-term, if NO
   //  open-N cycle included
   fd->fire_a2soi.orgn = (fd->fire_soi2a.orgn+ fd->fire_v2a.orgn)/cd->gd->fri;
-
   //put the retained C/N into the first unburned soil layer's
   //  chemically-resistant SOMC pool
   // Note - this 'retained C' could be used as char-coal, if need to do so.

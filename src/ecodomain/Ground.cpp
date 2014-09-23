@@ -1951,7 +1951,7 @@ void Ground::checkFrontsValidity() {
 /** Check the validity of water contents in soil column. */
 void Ground::checkWaterValidity() {
   BOOST_LOG_NAMED_SCOPE("h20 check");
-  BOOST_LOG_SEV(glg, debug) << "Checking water validity...";
+  //BOOST_LOG_SEV(glg, debug) << "Checking water validity...";
 
   Layer* currl = toplayer;
 

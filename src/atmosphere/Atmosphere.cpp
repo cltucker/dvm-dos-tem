@@ -58,8 +58,9 @@ void Atmosphere::prep_drivingdata_onecht_all_yrsmonths() {
 
   // Find average monthly values. Used first MAX_ATM_NOM_YR years of climate
   // data to create averages
+  yrsumday = 0.0;
   for(int im = 0; im < 12; im++) {
-    yrsumday = 0; //Yi: may 17, 2010
+  //  yrsumday = 0; //Yi: may 17, 2010
     eq_tair[im] = 0.0;
     eq_prec[im] = 0.0;
     eq_rain[im] = 0.0;
@@ -288,10 +289,10 @@ float Atmosphere::getSatVP(const float & tair) {
   /*% Guide to Meteorological Instruments and Methods of Observation (CIMO Guide)
     %      (WMO, 2008), for saturation vapor pressure
     %      (1) ew = 6.112 e(17.62 t/(243.12 + t))                                                                  [2]
-    %      with t in [°C] and ew in [hPa, mbar]
+    %      with t in [\B0C] and ew in [hPa, mbar]
 
     %      (2) ei = 6.112 e(22.46 t/(272.62 + t))                                                                      [14]
-    %      with t in [°C] and ei in [hPa]
+    %      with t in [\B0C] and ei in [hPa]
   */
   if(tair>0) {
     svp = 6.112 * exp(17.63 * tair/ (243.12 + tair) ) * 100.0;

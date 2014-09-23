@@ -125,4 +125,20 @@ configured_suites = {
       { 'jsontag': 'NitrogenUptakeAll', 'axesnum':7, 'units': 'gN/m^2', },
     ] 
   },
+  'Fire':{
+    'desc': "Temporary viewing of fire outputs",
+    'rows': 3,
+    'cols': 1,
+    'traces': [
+      { 'jsontag': 'BURNVEGN', 'axesnum': 0, 'units': 'gN/m^2', 'pft': '', },
+      { 'jsontag': 'BURNVEGC', 'axesnum': 0, 'units': 'gC/m^2', 'pft': '', },
+
+      { 'jsontag': 'BURNSOIN', 'axesnum': 1, 'units': 'gN/m^2', },
+      { 'jsontag': 'BURNSOIC', 'axesnum': 1, 'units': 'gC/m^2', },
+
+#      { 'jsontag': 'BURNVEG2SOIBLN', 'axesnum': 2, 'units': 'gN/m^2','pft': '', },
+#      { 'jsontag': 'BURNVEG2SOIBLC', 'axesnum': 2, 'units': 'gC/m^2', 'pft': '',},
+    ] 
+  },
 }
+

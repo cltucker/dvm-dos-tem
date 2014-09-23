@@ -22,21 +22,21 @@ CMT00 // SHOULD THIS BE BARE GROUND/OPEN WATER/SNOW AND ICE??? ##THESE ARE JUNK 
 0.0020805       // kdcsompr:
 0.0000108       // kdcsomcr:
 //===========================================================
-CMT01 // TRIAL COMMUNITY###THESE ARE JUNK VALUES!!!###- (max. 10 PFTs over 1 soil column) (BGC) plant calibrated parameters
+CMT01 // Black Spruce Forest ###THESE ARE JUNK VALUES!!!###- (max. 10 PFTs over 1 soil column) (BGC) plant calibrated parameters
 //PFT0      PFT1        PFT2         PFT3         PFT4         PFT5         PFT6         PFT7         PFT8         PFT9         // names: comments                  
-2550.0      6250.0       0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // cmax:
-25.0        85.0         0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // nmax:
-0.083       0.083       0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // cfall(0): leave
-0.02        0.016       0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // cfall(1): stem
-0.012       0.02        0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // cfall(2): root
-0.028       0.028       0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // nfall(0): leave
-0.018       0.013       0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // nfall(1): stem
-0.012       0.012       0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // nfall(2): root
--8.06e-05   -8.06e-05   0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // kra:    maintenance resp.
--2.3        -3.90       0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // krb(0): maintenance resp.(leave) 
--4.6        -6.20       0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // krb(1): maintenance resp.(stem) 
--0.2        -1.00       0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // krb(2): maintenance resp.(root)
-0.20         0.20       0.0          0.0          0.0          0.0          0.0          0.0          0.0          0.0          // frg: NPP fraction for growth resp. 
+2200         2200.0       1250.0         83.0         50.0         27.0         28.0         260.0         250.0         0.0          // cmax:
+3.3          3.3          2.5          0.80         1.4          1.5          2.2          1.1          2.1          0.0          // nmax:
+0.018        0.018        0.03        0.110        0.083        0.083        0.083        0.001        0.018        0.0          // cfall(0): leave
+0.003        0.003        0.004        0.009        0.0          0.0          0.0          0.0          0.0          0.0          // cfall(1): stem
+0.013        0.013        0.022        0.128        0.083        0.083        0.083        0.0          0.0          0.0          // cfall(2): root
+0.014        0.014        0.028        0.075        0.042        0.042        0.042        0.001        0.009        0.0          // nfall(0): leave
+0.001        0.001        0.001        0.007        0.0          0.0          0.0          0.0          0.0          0.0          // nfall(1): stem
+0.011        0.011        0.008        0.095        0.042        0.042        0.042        0.0          0.0          0.0          // nfall(2): root
+-8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    // kra:    maintenance resp.
+-3.50        -3.50        -2.35        -7.50        -2.40        -2.12        -2.35        -2.35        -2.15        0.0          // krb(0): maintenance resp.(leave) 
+-8.20        -8.20        -4.65        -3.9         0.0          0.0          0.0          0.0          0.0          0.0          // krb(1): maintenance resp.(stem) 
+-10.2        -10.2        -0.20        -1.0         -0.20        -0.20        -0.20        0.0          0.0          0.0          // krb(2): maintenance resp.(root)
+0.20         0.20         0.20         0.20         0.20         0.20         0.20         0.20         0.20         0.0          // frg: NPP fraction for growth resp. 
 // soil calibrated parameters
 2.65253         // micbnup: parameter for soil microbial immobialization of N
 0.0057042       // kdcmoss: dead moss C decompositin rates at reference condition
@@ -58,7 +58,7 @@ CMT02 // White Spruce Forest ###THESE ARE JUNK VALUES!!!###- (max. 10 PFTs over 
 -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    // kra:    coeff(0) in maintenance resp.
 -3.50        -2.35        -2.35        -7.50        -2.40        -2.12        -2.35        -2.35        -2.15        0.0          // krb(0): coeff(1) in maintenance resp.(leave) 
 -8.20        -4.65        -4.65        -3.9         0.0          0.0          0.0          0.0          0.0          0.0          // krb(1): coeff(1) in maintenance resp.(stem) 
--10.2        -5.20        -5.20        -1.0         -0.20        -0.20        -0.20        0.0          0.0          0.0          // krb(2): coeff(1) in maintenance resp.(root)
+-10.2        -0.20        -0.20        -1.0         -0.20        -0.20        -0.20        0.0          0.0          0.0          // krb(2): coeff(1) in maintenance resp.(root)
 0.20         0.20         0.20         0.20         0.20         0.20         0.20         0.20         0.20         0.0          // frg: fraction of available NPP (GPP after rm) for growth resp. 
 // soil calibrated parameters
 2.65253         // micbnup: parameter for soil microbial immobialization of N
@@ -93,8 +93,8 @@ CMT03 // Boreal Deciduous Forest ###THESE ARE JUNK VALUES!!!###- (max. 10 PFTs o
 //===========================================================
 CMT04 // Shrub Tundra - (max. 10 PFTs over 1 soil column) (BGC) plant calibrated parameters
 //Salix      Betula       Decid.       E.green      Sedges       Forbs        Grasses      Lichens      Feather      Misc1.       // names: comments                  
-256.0        1769.7       208.12       313.7        110.7        98.0         65.9         83.45        97.50        0.0          // cmax:
-2.6          5.18         0.96         0.19         0.50         0.74         0.29         0.033        0.08         0.0          // nmax:
+255.0        625.0        83.0         23.9         45.0         66.8         27.8         38.8         86.1         0.0          // cmax:
+2.5          8.5          0.81         0.19         0.23         0.76         0.29         0.02         0.1          0.0          // nmax:
 0.083        0.083        0.083        0.118        0.083        0.083        0.083        0.037        0.018        0.0          // cfall(0): leave
 0.020        0.016        0.012        0.008        0.0          0.0          0.0          0.0          0.0          0.0          // cfall(1): stem
 0.027        0.020        0.068        0.084        0.083        0.083        0.083        0.0          0.0          0.0          // cfall(2): root
@@ -102,9 +102,9 @@ CMT04 // Shrub Tundra - (max. 10 PFTs over 1 soil column) (BGC) plant calibrated
 0.018        0.013        0.005        0.006        0.0          0.0          0.0          0.0          0.0          0.0          // nfall(1): stem
 0.012        0.009        0.016        0.055        0.042        0.042        0.042        0.0          0.0          0.0          // nfall(2): root
 -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    -8.06e-05    0.0          // kra:    coeff(0) in maintenance resp.
--2.30        -3.90        -3.50        -3.30        -1.20        -3.60        -4.10        -3.10        -3.90        0.0          // krb(0): coeff(1) in maintenance resp.(leave) 
+-2.30        -3.90        -7.50        -3.30        -1.20        -3.60        -4.10        -3.10        -3.90        0.0          // krb(0): coeff(1) in maintenance resp.(leave) 
 -4.60        -6.20        -3.90        -5.80        0.0          0.0          0.0          0.0          0.0          0.0          // krb(1): coeff(1) in maintenance resp.(stem) 
--4.00        -5.00        -3.00        -3.00        -3.30        -3.80        -4.60        0.0          0.0          0.0          // krb(2): coeff(1) in maintenance resp.(root)
+-0.20        -0.05        -1.0         -0.50        -3.30        -1.80        -1.60        0.0          0.0          0.0          // krb(2): coeff(1) in maintenance resp.(root)
 0.20         0.20         0.20         0.20         0.20         0.20         0.20         0.20         0.20         0.0          // frg: fraction of available NPP (GPP after rm) for growth resp. 
 // soil calibrated parameters
 2.65253         // micbnup: parameter for soil microbial immobialization of N

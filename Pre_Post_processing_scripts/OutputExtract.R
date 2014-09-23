@@ -1,20 +1,22 @@
 library(ncdf4)
 
 # ---!!! Indicate the path to the TEM output folder !!!---
-setwd('/home/colin_tucker/dvm-dos-tem/DATA/test_single_site/output')
+setwd('/home/colin_tucker/dvm-dos-tem/DATA/Toolik_Inputs/output')
 # ---!!! Indicate the type of data you want to extract !!!---
 
 #what run mode (eq, tr, sp ,sc)? If several modes, separate with a comma. If all, type 'all'.
 run <- c('eq')
 #what time step (daily, monthly, yearly)? if several time steps, separate with a comma. If all, type 'all'.
-timestep <- c('monthly')
+timestep <- c('yearly')
 #what variable? If several variables, separate with a comma.
-##variable  <- c('NUPTAKEL','NUPTAKESALL','NUPTAKES','NMOBILALL','NMOBIL','NMOBILALL','NRESOBALL',
-#               'NRESORB','VEGNSUM','RH','NMITKSOIL','NETNMIN','AVLNINPUT',
-#               'AVLNLOST','ORGNLOST','LTRFALNALL','AVLNSUM','NEP','NPPALL','INNPPALL','LTRFALCALL','VEGCSUM',
-#               'GPPALL','INGPPALL','SOMCSHLW','SOMCDEEP','SOMCMINEA','SOMCMINEB','SOMCMINEC','RHMOIST',
-#               'RHQ10','SOILLTRFCN','LAI','SNOWFALL','ALD','EETTOTAL','PETTOTAL','TAIR','RAINFALL','SOILTAVE','SOILVWC','RZTHAWPCT')
-variable <- VEGCSUM
+variable  <- c('VEGCSUM','VEGCPART','VEGNSUM','VEGNLAB','VEGNSTRNSUM','VEGNSTRNPART','VEGCDEAD','VEGNDEAD',
+               'WDEBRISC','WDEBRISN','GPPFTEMP','GPPGV','GPPFNA','GPPFCA','RAQ10','RMKR','INGPPALL','INGPP','INNPPALL','INNPP','GPPALL',
+               'GPP','NPPALL','NPP','RMALL','RM','RGALL','RG','LTRFALCALL','LTRFALC','LTRFALNALL','LTRFALN','INNUPTAKE','NROOTEXTRACT',
+               'NUPTAKEL','NUPTAKESALL','NUPTAKES','NMOBILALL','NMOBIL','NRESOBALL','NRESORB','RAWC','SOMA','SOMPR','SOMCR','ORGN','AVLN',
+               'SOMCSHLW','SOMCDEEP','SOMCMINEA','SOMCMINEB','SOMCMINEC','RAWCSUM','SOMASUM','SOMPRSUM','SOMCRSUM','ORGNSUM','AVLNSUM','RH',
+               'NMITKSOIL','RHMOIST','RHQ10','SOILLTRFCN','NEP','NETNMIN','ORGCINPUT','ORGNINPUT','AVLNINPUT','DOCLOST','AVLNLOST',
+               'ORGNLOST','BURNTHICK','BURNSOIC','BURNVEGC','BURNSOIN','BURNVEGN','BURNRETAINC','BURNRETAINN')
+#variable <- 'VEGCSUM'
 #Create a folder to store the output text files: 1 file per variable
 dir <- 'Txt' 
 dir.create(paste(getwd(),'/',dir,sep=''), recursive=TRUE)
@@ -22,13 +24,9 @@ dir.create(paste(getwd(),'/',dir,sep=''), recursive=TRUE)
 
 # Identifying the output file containing the variable under interest
 
-listdim <- c('CHTID','YEAR','MONTH','CMTTYPE','VEGAGE','IFWOODY','IFDECIWOODY','IFPERENIAL','NONVASCULAR',
-             'VEGCOV','LAI','FPC','ROOTFRAC','FLEAF','FFOLIAGE','SNWAGE','SNWTHICK','SNWDENSE','SNWRHO','SNWEXTRAMASS',
-             'SOILLAYERNO','MOSSLAYERNO','SHLWLAYERNO','DEEPLAYERNO','MINELAYERNO','SOILTHICK','MOSSTHICK','SHLWTHICK',
-             'DEEPTHICK','MINEATHICK','MINEBTHICK','MINECTHICK','SOILZ','SOILDZ','SOILTYPE','SOILPORO','SOILTEXTURE','SOILRTFRAC')
+listdim <- c('tstep','pft','vegpart','soillayer')
 
-
-listenv <- c('CHTID','ERRORID','YEAR','MONTH','DAY','CO2','TAIR','NIRR','PREC','VAPO','SVP','VPD','PAR','RAINFALL','SNOWFALL',
+listenv <- c('CHTID','ERRORID','YEAR','MONTH','CO2','TAIR','NIRR','PREC','VAPO','SVP','VPD','PAR','RAINFALL','SNOWFALL',
              'PARDOWN','PARABSORB','SWDOWN','SWINTER','RAININTER','SNOWINTER','EETTOTAL','PETTOTAL','CANOPYRAIN','CANOPYSNOW',
              'CANOPYRC','CANOPYCC','CANOPYBTRAN','CANOPYM_PPFD','CANOPYM_VPD','CANOPYSWREFL','CANOPYSWTHFL','CANOPYEVAP',
              'CANOPYTRAN','CANOPYPEVAP','CANOPYPTRAN','CANOPYSUBLIM','CANOPYRDRIP','CANOPYRTHFL','CANOPYSDRIP','CANOPYSTHFL',
@@ -108,9 +106,9 @@ if (out$var[[rk]]$ndims == 1)
 	{
 	if (out$var[[rk]]$dim[[1]]$name == out$dim[[i]]$name) rkdim1 <- i
 	}
-	var <- data.frame(ncvar_get(out,out$var[[rk]],start=1,count=out$dim[[rkdim1]]$len))
-	names(var) <- varname
-	file <- data.frame(file,var)
+	varout <- data.frame(ncvar_get(out,out$var[[rk]],start=1,count=out$dim[[rkdim1]]$len))
+	names(varout) <- varname
+	file <- data.frame(file,varout)
 }
 
 #extraction for variables with two dimensions
@@ -124,10 +122,10 @@ if (out$var[[rk]]$ndims == 2)
 	
 	for(i in 1:out$dim[[rkdim1]]$len)
 	{
-	var <- data.frame(ncvar_get(out,out$var[[rk]],start=c(i,1),count=c(1,out$dim[[rkdim2]]$len)))
+	varout <- data.frame(ncvar_get(out,out$var[[rk]],start=c(i,1),count=c(1,out$dim[[rkdim2]]$len)))
 	dimname <- out$dim[[rkdim1]]$name
-	names(var)<-paste(varname,"_",dimname,i,sep="")
-	file <- data.frame(file,var)	
+	names(varout)<-paste(varname,"_",dimname,i,sep="")
+	file <- data.frame(file,varout)	
 	}
 }
 
@@ -145,18 +143,18 @@ if (out$var[[rk]]$ndims == 3)
 	{
 		for(j in 1:out$dim[[rkdim1]]$len)
 		{
-		var <- data.frame(ncvar_get(out,out$var[[rk]],start=c(j,i,1),count=c(1,1,out$dim[[rkdim3]]$len)))	
+		out <- data.frame(ncvar_get(out,out$var[[rk]],start=c(j,i,1),count=c(1,1,out$dim[[rkdim3]]$len)))	
 		dimname1 <- out$dim[[rkdim1]]$name
 		dimname2 <- out$dim[[rkdim2]]$name
-		names(var)<-paste(varname,"_",dimname2,i,dimname1,j,sep="")		
-		file <- data.frame(file,var)	
+		names(varout)<-paste(varname,"_",dimname2,i,dimname1,j,sep="")		
+		file <- data.frame(file,varout)	
 		}
 	}
 }
+}}}
 write.csv(file, file=paste("./",dir,"/",typename,"_",stepname,"_",varname,"_",runname,".csv", sep=""))
 }
 }
 }
-
 
 

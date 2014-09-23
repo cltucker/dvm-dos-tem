@@ -280,12 +280,12 @@ void RunCohort::choose_run_stage_settings() {
       BOOST_LOG_SEV(glg, info) << "Turning ON all switches!";
       md->set_envmodule(true);
       md->set_bgcmodule(true);
-      md->set_nfeed(true);
-      md->set_avlnflg(true);
-      md->set_baseline(true);
-      md->set_dsbmodule(true);
-      md->set_dslmodule(true);
-      md->set_dvmmodule(true);
+      md->set_nfeed(false);
+      md->set_avlnflg(false);
+      md->set_baseline(false);
+      md->set_dsbmodule(false);
+      md->set_dslmodule(false);
+      md->set_dvmmodule(false);
       md->set_friderived(true);
     }
 
@@ -504,6 +504,9 @@ void RunCohort::output_caljson_yearly(int year) {
   data["MossdeathCarbon"] = cht.bdall->y_v2soi.mossdeathc;
   data["MossdeathNitrogen"] = cht.bdall->y_v2soi.mossdeathn;
 
+  data["BURNSOIN"] = cht.fd->fire_soi2a.orgc;
+  data["BURNSOIC"] = cht.fd->fire_soi2a.orgn;
+
   for(int pft=0; pft<NUM_PFT; pft++) { //NUM_PFT
     char pft_chars[5];
     sprintf(pft_chars, "%d", pft);
@@ -526,7 +529,12 @@ void RunCohort::output_caljson_yearly(int year) {
     data["PFT" + pft_str]["PARDown"] = cht.ed[pft].y_a2v.pardown;
     data["PFT" + pft_str]["PARAbsorb"] = cht.ed[pft].y_a2v.parabsorb;
     data["PFT" + pft_str]["NitrogenUptake"] = cht.bd[pft].y_soi2v.snuptakeall;
+    data["PFT" + pft_str]["BURNVEGN"] = cht.fd[pft].fire_v2a.orgn;
+    data["PFT" + pft_str]["BURNVEGC"] = cht.fd[pft].fire_v2a.orgc;
+//    data["PFT" + pft_str]["BURNVEG2SOIBLN"] = cht.fd[pft].fire_v2soi.blwc;
+//    data["PFT" + pft_str]["BURNVEG2SOIBLC"] = cht.fd[pft].fire_v2soi.blwn;
   }
+
 
   std::stringstream filename;
   filename.fill('0');
