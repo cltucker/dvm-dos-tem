@@ -313,11 +313,11 @@ void RunCohort::choose_run_stage_settings() {
       BOOST_LOG_SEV(glg, info) << "";
       md->set_envmodule(true);
       md->set_bgcmodule(true);
-      md->set_nfeed(false);
+      md->set_nfeed(true);
       md->set_avlnflg(true);
       md->set_baseline(true);
       md->set_dsbmodule(false);
-      md->set_dslmodule(false);
+      md->set_dslmodule(true);
       md->set_dvmmodule(true);
       md->set_friderived(true);
     } else {
@@ -331,7 +331,7 @@ void RunCohort::choose_run_stage_settings() {
       md->set_avlnflg(true);
       md->set_baseline(true);
       md->set_dsbmodule(false);
-      md->set_dslmodule(false);
+      md->set_dslmodule(true);
       md->set_dvmmodule(true);
       md->set_friderived(true);
     }
@@ -364,9 +364,9 @@ void RunCohort::choose_run_stage_settings() {
       BOOST_LOG_SEV(glg, info) << "Pausing. Please check that the 'pre-run' "
                                << "data looks good.";
       
-      calcontroller_ptr->pause();
+      //calcontroller_ptr->pause();
 
-      calcontroller_ptr->clear_and_create_json_storage();
+      //calcontroller_ptr->clear_and_create_json_storage();
 
       cht.timer->reset();
       BOOST_LOG_SEV(glg, info) << "Spinup stage. CALIBRATION MODE!";
