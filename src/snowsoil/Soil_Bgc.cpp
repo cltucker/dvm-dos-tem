@@ -215,12 +215,36 @@ void Soil_Bgc::initializeState() {
 
 void Soil_Bgc::initializeState5restart(RestartData* resin) {
   for (int il =0; il<MAX_SOI_LAY; il++) {
-    bd->m_sois.rawc[il] = resin->rawc[il];
-    bd->m_sois.soma[il] = resin->soma[il];
-    bd->m_sois.sompr[il]= resin->sompr[il];
-    bd->m_sois.somcr[il]= resin->somcr[il];
-    bd->m_sois.orgn[il] = resin->orgn[il];
-    bd->m_sois.avln[il] = resin->avln[il];
+    if(resin->rawc[il]>=0){
+		  bd->m_sois.rawc[il] = resin->rawc[il];
+    } else { 
+		  bd->m_sois.rawc[il] = 0;
+    }
+    if(resin->soma[il]>=0){    
+		  bd->m_sois.soma[il] = resin->soma[il];
+    } else { 
+		  bd->m_sois.soma[il] = 0;
+    }
+    if(resin->sompr[il]>=0){
+		  bd->m_sois.sompr[il]= resin->sompr[il];
+    } else { 
+		  bd->m_sois.sompr[il] = 0;
+    }
+    if(resin->somcr[il]>=0){
+		  bd->m_sois.somcr[il]= resin->somcr[il];
+    } else { 
+		  bd->m_sois.somcr[il] = 0;
+    }
+    if(resin->orgn[il]>=0){
+		  bd->m_sois.orgn[il] = resin->orgn[il];
+    } else { 
+		  bd->m_sois.orgn[il] = 0;
+    }
+    if(resin->avln[il]>=0){
+		  bd->m_sois.avln[il] = resin->avln[il];
+    } else { 
+		  bd->m_sois.avln[il] = 0;
+    }
 
     for(int i=0; i<10; i++) {
       bd->prvltrfcnque[il].clear();
