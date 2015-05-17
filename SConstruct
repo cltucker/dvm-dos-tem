@@ -6,16 +6,13 @@ import os
 import platform
 import distutils.spawn
 
-USEMPI = True 
+USEMPI = False 
 
 libs = Split("""jsoncpp
-                profiler
                 readline
                 netcdf_c++
                 netcdf
                 pthread
-                mpi_cxx
-                mpi
                 boost_system
                 boost_filesystem
                 boost_program_options
@@ -48,7 +45,6 @@ src_files = Split("""src/TEM.cpp
                      src/assembler/RunCohort.cpp
                      src/assembler/RunGrid.cpp
                      src/assembler/Runner.cpp
-                     src/assembler/RunRegion.cpp
                      src/atmosphere/Atmosphere.cpp
                      src/atmosphere/AtmosUtil.cpp
                      src/data/BgcData.cpp
@@ -76,8 +72,6 @@ src_files = Split("""src/TEM.cpp
                      src/ecodomain/layer/ParentLayer.cpp
                      src/ecodomain/layer/SnowLayer.cpp
                      src/ecodomain/layer/SoilLayer.cpp
-                     src/input/CohortInputer.cpp
-                     src/input/RegionInputer.cpp
                      src/input/RestartInputer.cpp
                      src/lookup/CohortLookup.cpp
                      src/lookup/SoilLookup.cpp
@@ -91,7 +85,6 @@ src_files = Split("""src/TEM.cpp
                      src/runmodule/Integrator.cpp
                      src/runmodule/ModelData.cpp
                      src/runmodule/OutRetrive.cpp
-                     src/runmodule/Region.cpp
                      src/runmodule/Timer.cpp
                      src/snowsoil/Richards.cpp
                      src/snowsoil/Snow_Env.cpp
@@ -117,8 +110,8 @@ platform_include_path = [];
 platform_library_path = []
 
 #compiler = 'g++'
-#compiler = '/usr/lib64/openmpi/bin/mpic++'
-compiler = distutils.spawn.find_executable('mpic++')
+compiler = '/usr/lib64/openmpi/bin/mpic++'
+#compiler = distutils.spawn.find_executable('mpic++')
 
 print compiler
 
