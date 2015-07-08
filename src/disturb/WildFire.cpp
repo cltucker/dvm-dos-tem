@@ -114,35 +114,37 @@ int WildFire::getOccur(const int &yrind, const bool & friderived) {
   if(friderived) {
     if(yrind%cd->gd->fri==0 && yrind>0) {
       //fire size, dervied from input probability of grid fire sizes
-      //*
+
       double pdf = 0.;
 
-      for (int i=0; i<NUM_FSIZE; i++) {
+      /*for (int i=0; i<NUM_FSIZE; i++) {
         if (cd->gd->pfsize[i]>=pdf) {
           pdf=cd->gd->pfsize[i];
           onesize = i; //find the size index with the most frequent fire size
                        //  (need further modification using a
                        //   randomness generator)
         }
-      }
+      }*/
+      onesize = 2;
 
-      //*/
+      //
       //fire season, dervied from input probability of grid fire seasons
       //fire season's month index order (0~11):
       vector<int> firemonths;
-      //*
+      //
       double pf = 0.;
 
-      for (int i=0; i<NUM_FSEASON; i++) {
+      /*for (int i=0; i<NUM_FSEASON; i++) {
         if (cd->gd->pfseason[i]>=pf) {
           pf=cd->gd->pfseason[i];
-          oneseason = i+1; //find the season index with the most frequent
+          oneseason = i+1; //  find the season index with the most frequent
                            //  fire occurrence (need further modification
                            //  using a randomness generator)
         }
-      }
+      }*/
+      oneseason=2;
 
-      //*/
+      //
       // get the fire month based on 'season'
       //Yuan: season: 1(pre-fireseason), 2(early fire), 3(late fire), and 4
       //  (post-fireseason), with 3 months in the order
@@ -155,8 +157,8 @@ int WildFire::getOccur(const int &yrind, const bool & friderived) {
 
       //randomly pick-up a month for fire occurence
       random_shuffle(firemonths.begin(),firemonths.end());
-      //int firetime= firemonths[1];
-      int firetime= 6;//rar Temp. static, to guarantee deterministic results
+      int firetime= firemonths[1];
+      //int firetime= 6;//rar Temp. static, to guarantee deterministic results
       firemonths.clear();
       onemonth = firetime;
       // fire year
@@ -190,7 +192,7 @@ int WildFire::getOccur(const int &yrind, const bool & friderived) {
     }
   }
 
-  return error;
+  //return error;
 };
 
 //Burning vegetation and soil organic C
@@ -447,7 +449,13 @@ void WildFire::deriveFireSeverity() {
         oneseverity = 3;
       }
     } else if (oneseason==3) { //late season fire
-      oneseverity = 4;
+       if(onesize==1) { //Yuan: (firesize: 0, 1, 2, 3, 4)
+        oneseverity = 2;
+      } else if(onesize==2) {
+        oneseverity = 2;
+      } else if(onesize>2) {
+        oneseverity = 4;
+      }
     }
   } else if(cd->gd->drgtype==1) {
     oneseverity = 1;
