@@ -304,7 +304,7 @@ class ExpandingWindow(object):
       logging.info("QUIT")
       plt.close()
     if event.key == 'ctrl+p':
-      n = 1000
+      n = 100
       files = sorted( glob.glob('%s/*.json' % YRTMPDIR) )
       if n < len(files):
         logging.warning( "Deleting first %s json files from %s..." % (n, YRTMPDIR) )
